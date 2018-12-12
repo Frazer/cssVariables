@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CSS variables</title>
+  </head>
+  <body>
+   <div id="mouse-slide">
+   </div>
+
+  </body>
+  <style>
+  	body{
+  		margin: 0px;
+  		--xp: calc(var(--mouse-x) * 100%);
+  		--yp: calc(var(--mouse-y) * 100%);
+
+  	}
+
+  	#mouse-slide {
+  		width: 100vw;
+  		height: 100vh;
+  		--y-color: hsl(calc(360 * var(--mouse-y)) , 100%, 80%);
+  		--x-color: hsl(calc(360 * var(--mouse-x)) , 100%, 80%);
+
+  		background-image: radial-gradient( 
+  			circle at var(--xp) var(--yp) , 
+  			white 20px, var(--y-color) 50px, var(--x-color) 70%)
+  	}
+  </style>
+  <script>
+  	var root = document.documentElement;
+	document.addEventListener("mousemove", evt => {
+		let x = evt.clientX/ innerWidth;
+		let y = evt.clientY/ innerHeight;
+		
+		root.style.setProperty("--mouse-x", x);
+		root.style.setProperty("--mouse-y", y);
+	});
+  </script>
+</html>
