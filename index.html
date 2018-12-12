@@ -12,16 +12,16 @@
   <style>
   	body{
   		margin: 0px;
-  		--xp: calc(var(--mouse-x) * 100%);
-  		--yp: calc(var(--mouse-y) * 100%);
+  		--xp: calc(var(--mouse-x,0.5) * 100%);
+  		--yp: calc(var(--mouse-y,0.5) * 100%);
 
   	}
 
   	#mouse-slide {
   		width: 100vw;
   		height: 100vh;
-  		--y-color: hsl(calc(360 * var(--mouse-y)) , 100%, 80%);
-  		--x-color: hsl(calc(360 * var(--mouse-x)) , 100%, 80%);
+  		--y-color: hsl(calc(360 * var(--mouse-y,0.5)) , 100%, 80%);
+  		--x-color: hsl(calc(360 * var(--mouse-x,0.5)) , 100%, 80%);
 
   		background-image: radial-gradient( 
   			circle at var(--xp) var(--yp) , 
